@@ -30,3 +30,12 @@ class Board:
   def token_count(self):
     tokens = [cell for cell in self.cells if cell != " "]
     return len(tokens)
+  
+  def valid_positions(self):
+    idx = 0
+    lis = []
+    for cell in self.cells:
+      if cell == " ":
+        lis.append(idx)
+      idx += 1
+    return lis

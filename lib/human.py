@@ -1,8 +1,6 @@
 from helpers import get_input
+from player import Player
 
-class Human:
-  def __init__(self, token):
-    self.token = token
-
-  def move(self):
+class Human(Player):
+  def move(self, board):
     return get_input()

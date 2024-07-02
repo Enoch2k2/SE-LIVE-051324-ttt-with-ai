@@ -34,7 +34,7 @@ class Game:
     self.board.display()
     print("")
     print("Please Enter (1-9): ")
-    user_input = self.current_player().move()
+    user_input = self.current_player().move(self.board)
     if self.valid_input(user_input) and self.board.valid_position(user_input):
       self.board.update(user_input, self.current_player().token)
       self.board.display()

@@ -2,6 +2,7 @@ from helpers import clear_cli, get_input, invalid_input
 from board import Board
 from game import Game
 from human import Human
+from computer import Computer
 
 class Cli:
   def start(self):
@@ -23,8 +24,30 @@ class Cli:
   def game_mode_selection(self):
     user_input = get_input()
     if user_input == "1":
-      print("Playing a one player game...")
+      self.setup_one_player()
     elif user_input == "2":
+      self.setup_two_player()
+    elif user_input == "3":
+      print("Playing computer vs computer...")
+    elif user_input == "exit":
+      print("Thanks for playing! Goodbye!")
+    else:
+      clear_cli()
+      invalid_input()
+      self.game_mode_menu()
+
+  def setup_one_player(self):
+      board = Board()
+      player_1 = Human(token="X")
+      player_2 = Computer(token="O")
+      game = Game(
+        player_1=player_1,
+        player_2=player_2,
+        board=board
+        )
+      game.start()
+
+  def setup_two_player(self):
       board = Board()
       player_1 = Human(token="X")
       player_2 = Human(token="O")
@@ -34,12 +57,3 @@ class Cli:
         board=board
         )
       game.start()
-
-    elif user_input == "3":
-      print("Playing computer vs computer...")
-    elif user_input == "exit":
-      print("Thanks for playing! Goodbye!")
-    else:
-      clear_cli()
-      invalid_input()
-      self.game_mode_menu()
